@@ -1,6 +1,7 @@
 import com.sun.javafx.PlatformUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -19,11 +20,13 @@ public class SignInTest {
 
         driver.findElement(By.linkText("Your trips")).click();
         driver.findElement(By.id("SignIn")).click();
-
+       WebElement otherFrame = driver.findElement(By.xpath("//iframe[@src='https://www.cleartrip.com/signin?popup=yes&service=/']"));
+       driver.switchTo().frame(otherFrame);
         driver.findElement(By.id("signInButton")).click();
 
         String errors1 = driver.findElement(By.id("errors1")).getText();
         Assert.assertTrue(errors1.contains("There were errors in your submission"));
+        driver.switchTo().defaultContent();
         driver.quit();
     }
 
