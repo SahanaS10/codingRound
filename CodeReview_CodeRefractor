@@ -1,0 +1,43 @@
+**Code Refractor/Review/Bug Fix**
+Note - Currently designed to run test classes individually
+       
+
+Introduced 2 new class
+1.Base Test:
+a.All the Test class extends this class 
+b.It has Before Suite to set driver path and open browser
+c.Hard wait is replaced by implicit wait
+d.After Suite to close browser
+
+2.Main Page:
+a.Uses Page object model
+b.It has locators and actions on locators 
+c.Common methods
+
+*****************
+
+A.Modification in FlightBookingTest
+Error fixed - incorrect web element id is fixed
+
+Refactor/Review:
+1.Should extend Base Test
+2.WebElements are moved to Main Page class
+3.Data to be passed can be fetched from excel or JSON
+****************
+B.Modification in Modification in HotelBookingTest
+Error fixed - WebElements were not initialized using Page factory class
+
+Refactor/Review:
+1.Should extend Base Test
+2.WebElements are moved to Main Page class
+3.No validation is done in this test class. Assertion statement is missing. 
+4.Data to be passed can be fetched from excel or JSON
+
+****************
+C.Modification in Modification in SignInTest
+Error fixed - Frames was not handled
+
+Refactor/Review:
+1.Should extend Base Test
+2.WebElements are moved to Main Page class
+3.Data to be passed can be fetched from excel or JSON
